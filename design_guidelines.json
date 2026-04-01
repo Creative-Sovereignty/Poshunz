@@ -1,0 +1,89 @@
+{
+  "theme": "dark",
+  "archetype": "5_Jewel_and_Luxury",
+  "brand_name": "Aethera Corporate Consulting",
+  "colors": {
+    "background_base": "#050505",
+    "surface_glass": "rgba(26, 11, 46, 0.4)",
+    "surface_solid": "#10071C",
+    "primary": "#D4AF37",
+    "primary_hover": "#F3E5AB",
+    "secondary": "#2A0A4A",
+    "accent_glow": "#8B5FBF",
+    "text_main": "#F8F8F8",
+    "text_muted": "#A19CA8",
+    "border_subtle": "rgba(255, 255, 255, 0.1)"
+  },
+  "typography": {
+    "heading_font": "Cinzel",
+    "body_font": "Outfit",
+    "h1_classes": "font-cinzel text-4xl md:text-5xl lg:text-6xl tracking-tight text-white",
+    "h2_classes": "font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37]",
+    "h3_classes": "font-cinzel text-2xl text-white",
+    "body_classes": "font-outfit text-base text-[#A19CA8] leading-relaxed",
+    "label_classes": "font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37]"
+  },
+  "spacing_and_layout": {
+    "section_padding": "py-24 md:py-32",
+    "container_classes": "max-w-7xl mx-auto px-6 md:px-12",
+    "grid_bento": "grid grid-cols-1 md:grid-cols-12 gap-6",
+    "card_padding": "p-8 md:p-10"
+  },
+  "surface_strategies": {
+    "cards": "bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none shadow-[0_8px_32px_rgba(42,10,74,0.3)]",
+    "buttons_primary": "bg-gradient-to-r from-[#D4AF37] to-[#B38F1A] text-black font-semibold rounded-none hover:brightness-110 transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)] px-8 py-3",
+    "buttons_secondary": "bg-transparent border border-[#D4AF37] text-[#D4AF37] font-semibold rounded-none hover:bg-[#D4AF37]/10 transition-all px-8 py-3",
+    "nav_bar": "fixed w-full z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5"
+  },
+  "motion_and_interactions": {
+    "hover_state": "transition-transform duration-300 hover:-translate-y-1",
+    "glow_effect": "hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]",
+    "entrance_animation": "framer-motion fade-in-up staggered"
+  },
+  "components_strategy": {
+    "booking_calendar": "Shadcn Calendar - Customized with dark purple background (#10071C), #D4AF37 active states, zero border radius (sharp corporate edges).",
+    "paywall_card": "Glassmorphism card with a heavy backdrop-blur overlay over the 'transcript' content area. Lock icon in #D4AF37. Solid black CTA button with gold border.",
+    "blog_preview": "Bento grid item (col-span-4). Image heavy with dark gradient overlay. Cinzel title for the mystical/new age touch.",
+    "video_conference_badge": "Subtle pulsing golden dot next to 'Google Meet Ready' text, using Ping animation."
+  },
+  "visual_enhancers": {
+    "background_texture": "Subtle grain/noise overlay across the entire site to give a tactile, ancient manuscript feel.",
+    "celtic_motifs": "Use highly subtle, absolute-positioned SVG Celtic knots in the background of sections, fill='white', opacity-5. Break symmetry to avoid generic looks.",
+    "lighting": "Use radial gradients in the background to simulate deep purple ambient lighting (e.g., bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#2A0A4A]/20 via-[#050505] to-[#050505])"
+  },
+  "media": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1749544812189-193ccae5e2f4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwzfHxteXN0aWNhbCUyMGRhcmslMjBnb2xkfGVufDB8fHx8MTc3NTAzMTA5OXww&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract golden light against black. Use as a heavily darkened background image with a dark purple gradient overlay for the Hero section."
+    },
+    "services_tarot": {
+      "url": "https://images.pexels.com/photos/10976268/pexels-photo-10976268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Close up of tarot reading. Use in the 'Consultation Services' or 'About' bento card."
+    },
+    "case_study_atmosphere": {
+      "url": "https://images.pexels.com/photos/5976100/pexels-photo-5976100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Luxurious golden ornaments. Use for the 'Downloadable Case Studies' section background."
+    },
+    "blog_mystic": {
+      "url": "https://images.pexels.com/photos/6178715/pexels-photo-6178715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Mystical tarot and candles. Use as a thumbnail for the Wiccan/New Age Blog previews."
+    }
+  },
+  "icons": {
+    "library": "lucide-react",
+    "stroke_width": 1.5,
+    "size_standard": 24,
+    "size_large": 32,
+    "color": "#D4AF37"
+  },
+  "instructions_to_main_agent": [
+    "Install and use Google Fonts: 'Cinzel' (for headings) and 'Outfit' (for body).",
+    "Implement the 'Aethera' consulting site as a dark-mode-only experience using the #050505 and #2A0A4A palettes.",
+    "Use Tailwind's generic grid utilities but apply the 'Tetris' bento logic for the case studies and blog previews (e.g., col-span-8 for featured case study, col-span-4 for standard).",
+    "For the booking calendar, use Shadcn Calendar but override its default styling: make backgrounds deep purple/black (#10071C), text white, and the selected date golden (#D4AF37) with black text. Use sharp edges (`rounded-none`).",
+    "Ensure the hero section uses the `hero_background` image with an overlay of `bg-gradient-to-b from-black/60 via-[#1A0B2E]/60 to-[#050505]` to maintain readability of the golden/white text.",
+    "In the transcripts section, simulate a Stripe paywall by blurring the content (`blur-sm` or `blur-md`) and placing a clear CTA to 'Unlock Transcript' centered over the blurred area.",
+    "Make sure button hovers use a brightness or slight glow effect, avoid changing the gold color to a generic blue or purple.",
+    "Add `data-testid` attributes to all forms, calendar dates, and CTAs."
+  ]
+}
