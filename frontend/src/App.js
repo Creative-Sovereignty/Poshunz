@@ -1,52 +1,403 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { useState } from 'react';
+import '@/App.css';
+import { Sparkles, Calendar, Video, FileText, BookOpen, Lock, Menu, X } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
-
 function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <div className="relative min-h-screen bg-[#050505] text-white overflow-hidden">
+      {/* Ambient lighting effect */}
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_30%_20%,_#2A0A4A,_#050505_50%)] opacity-40 pointer-events-none" />
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_70%_80%,_#1A0B2E,_transparent_60%)] opacity-30 pointer-events-none" />
+      
+      {/* Celtic background pattern */}
+      <div className="fixed inset-0 celtic-bg pointer-events-none" />
+
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="flex items-center justify-between h-20">
+            <div className="font-cinzel text-2xl text-[#D4AF37] tracking-tight" data-testid="logo">
+              Aethera
+            </div>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#services" className="font-outfit text-sm text-[#A19CA8] hover:text-[#D4AF37] transition-colors" data-testid="nav-services">Services</a>
+              <a href="#booking" className="font-outfit text-sm text-[#A19CA8] hover:text-[#D4AF37] transition-colors" data-testid="nav-booking">Book Session</a>
+              <a href="#case-studies" className="font-outfit text-sm text-[#A19CA8] hover:text-[#D4AF37] transition-colors" data-testid="nav-case-studies">Case Studies</a>
+              <a href="#blog" className="font-outfit text-sm text-[#A19CA8] hover:text-[#D4AF37] transition-colors" data-testid="nav-blog">Blog</a>
+              <button className="bg-gradient-to-r from-[#D4AF37] to-[#B38F1A] text-black font-semibold rounded-none px-8 py-3 hover:brightness-110 transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)]" data-testid="nav-login-btn">
+                Sign In
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button className="md:hidden text-[#D4AF37]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} data-testid="mobile-menu-btn">
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden py-6 space-y-4" data-testid="mobile-menu">
+              <a href="#services" className="block font-outfit text-sm text-[#A19CA8] hover:text-[#D4AF37] transition-colors">Services</a>
+              <a href="#booking" className="block font-outfit text-sm text-[#A19CA8] hover:text-[#D4AF37] transition-colors">Book Session</a>
+              <a href="#case-studies" className="block font-outfit text-sm text-[#A19CA8] hover:text-[#D4AF37] transition-colors">Case Studies</a>
+              <a href="#blog" className="block font-outfit text-sm text-[#A19CA8] hover:text-[#D4AF37] transition-colors">Blog</a>
+              <button className="w-full bg-gradient-to-r from-[#D4AF37] to-[#B38F1A] text-black font-semibold rounded-none px-8 py-3 hover:brightness-110 transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+                Sign In
+              </button>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="https://images.unsplash.com/photo-1749544812189-193ccae5e2f4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwzfHxteXN0aWNhbCUyMGRhcmslMjBnb2xkfGVufDB8fHx8MTc3NTAzMTA5OXww&ixlib=rb-4.1.0&q=85"
+            alt="Hero background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-[#1A0B2E]/70 to-[#050505]" />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6 md:px-12 text-center">
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none" data-testid="hero-badge">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4AF37]"></span>
+            </span>
+            <span className="font-outfit text-xs text-[#D4AF37] uppercase tracking-[0.2em]">Google Meet Ready</span>
+          </div>
+          
+          <h1 className="font-cinzel text-4xl md:text-5xl lg:text-6xl tracking-tight text-white mb-6 leading-tight" data-testid="hero-title">
+            Unlock Your Path Through
+            <br />
+            <span className="text-[#D4AF37]">Ancient Wisdom</span>
+          </h1>
+          
+          <p className="font-outfit text-base md:text-lg text-[#A19CA8] leading-relaxed max-w-2xl mx-auto mb-10" data-testid="hero-description">
+            Professional psychic consulting services blending timeless Celtic traditions with modern video conferencing. Book your session and receive detailed transcripts of your reading.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="bg-gradient-to-r from-[#D4AF37] to-[#B38F1A] text-black font-semibold rounded-none px-8 py-3 hover:brightness-110 transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)] glow-animate" data-testid="cta-book-session">
+              Book Your Session
+            </button>
+            <button className="bg-transparent border border-[#D4AF37] text-[#D4AF37] font-semibold rounded-none px-8 py-3 hover:bg-[#D4AF37]/10 transition-all" data-testid="cta-learn-more">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="relative py-24 md:py-32" data-testid="services-section">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-4 block">Our Services</span>
+            <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37]">Consultation Offerings</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {/* Large featured service */}
+            <div className="md:col-span-8 bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 md:p-10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-tarot">
+              <img 
+                src="https://images.pexels.com/photos/10976268/pexels-photo-10976268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                alt="Tarot Reading"
+                className="w-full h-64 object-cover mb-6 opacity-80"
+              />
+              <Sparkles className="text-[#D4AF37] mb-4" size={32} strokeWidth={1.5} />
+              <h3 className="font-cinzel text-2xl text-white mb-4">Personal Tarot Reading</h3>
+              <p className="font-outfit text-base text-[#A19CA8] leading-relaxed mb-6">
+                Deep dive into your past, present, and future through the ancient art of tarot. Each session includes a comprehensive written transcript delivered after your reading.
+              </p>
+              <div className="flex items-center gap-2 text-[#D4AF37] font-outfit text-sm">
+                <Video size={18} strokeWidth={1.5} />
+                <span>60 min session via Google Meet</span>
+              </div>
+            </div>
+            
+            {/* Smaller service cards */}
+            <div className="md:col-span-4 space-y-6">
+              <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-spiritual">
+                <Calendar className="text-[#D4AF37] mb-4" size={32} strokeWidth={1.5} />
+                <h3 className="font-cinzel text-xl text-white mb-3">Spiritual Guidance</h3>
+                <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed">
+                  Navigate life's challenges with personalized spiritual counsel and energy readings.
+                </p>
+              </div>
+              
+              <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-energy">
+                <Sparkles className="text-[#D4AF37] mb-4" size={32} strokeWidth={1.5} />
+                <h3 className="font-cinzel text-xl text-white mb-3">Energy Healing</h3>
+                <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed">
+                  Remote energy work and chakra balancing sessions to restore your inner harmony.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Booking Preview Section */}
+      <section id="booking" className="relative py-24 md:py-32 bg-[#10071C]/30" data-testid="booking-section">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-4 block">Easy Scheduling</span>
+              <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37] mb-6">Book Your Session</h2>
+              <p className="font-outfit text-base text-[#A19CA8] leading-relaxed mb-8">
+                Connect with ancient wisdom through modern technology. Schedule your consultation via Google Calendar, meet through Google Meet, and receive detailed transcripts of your session.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#D4AF37]/10 p-3 rounded-none border border-[#D4AF37]/20">
+                    <Calendar className="text-[#D4AF37]" size={24} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h4 className="font-cinzel text-lg text-white mb-1">Google Calendar Sync</h4>
+                    <p className="font-outfit text-sm text-[#A19CA8]">Seamless integration with your existing schedule</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#D4AF37]/10 p-3 rounded-none border border-[#D4AF37]/20">
+                    <Video className="text-[#D4AF37]" size={24} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h4 className="font-cinzel text-lg text-white mb-1">Video Sessions</h4>
+                    <p className="font-outfit text-sm text-[#A19CA8]">Face-to-face readings via Google Meet</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#D4AF37]/10 p-3 rounded-none border border-[#D4AF37]/20">
+                    <FileText className="text-[#D4AF37]" size={24} strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h4 className="font-cinzel text-lg text-white mb-1">Session Transcripts</h4>
+                    <p className="font-outfit text-sm text-[#A19CA8]">Detailed written records of your reading</p>
+                  </div>
+                </div>
+              </div>
+              
+              <button className="mt-8 bg-gradient-to-r from-[#D4AF37] to-[#B38F1A] text-black font-semibold rounded-none px-8 py-3 hover:brightness-110 transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)]" data-testid="booking-cta">
+                View Available Times
+              </button>
+            </div>
+            
+            <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 md:p-10">
+              <div className="aspect-square bg-[#2A0A4A]/40 border border-[#D4AF37]/20 rounded-none flex items-center justify-center">
+                <div className="text-center">
+                  <Calendar className="text-[#D4AF37] mx-auto mb-4" size={64} strokeWidth={1.5} />
+                  <p className="font-outfit text-sm text-[#A19CA8]">Calendar widget preview</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies Section */}
+      <section id="case-studies" className="relative py-24 md:py-32" data-testid="case-studies-section">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-4 block">Success Stories</span>
+            <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37]">Case Studies</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="case-study-1">
+              <img 
+                src="https://images.pexels.com/photos/5976100/pexels-photo-5976100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                alt="Case Study"
+                className="w-full h-48 object-cover mb-6 opacity-70"
+              />
+              <h3 className="font-cinzel text-xl text-white mb-3">Career Transformation</h3>
+              <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed mb-4">
+                How ancient guidance helped a CEO navigate major business decisions and personal growth.
+              </p>
+              <button className="flex items-center gap-2 text-[#D4AF37] font-outfit text-sm hover:text-[#F3E5AB] transition-colors" data-testid="download-case-1">
+                <FileText size={16} strokeWidth={1.5} />
+                Download PDF
+              </button>
+            </div>
+            
+            <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="case-study-2">
+              <img 
+                src="https://images.pexels.com/photos/6178715/pexels-photo-6178715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                alt="Case Study"
+                className="w-full h-48 object-cover mb-6 opacity-70"
+              />
+              <h3 className="font-cinzel text-xl text-white mb-3">Spiritual Awakening</h3>
+              <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed mb-4">
+                A journey from skepticism to profound spiritual connection through personalized readings.
+              </p>
+              <button className="flex items-center gap-2 text-[#D4AF37] font-outfit text-sm hover:text-[#F3E5AB] transition-colors" data-testid="download-case-2">
+                <FileText size={16} strokeWidth={1.5} />
+                Download PDF
+              </button>
+            </div>
+            
+            <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="case-study-3">
+              <img 
+                src="https://images.pexels.com/photos/10976268/pexels-photo-10976268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                alt="Case Study"
+                className="w-full h-48 object-cover mb-6 opacity-70"
+              />
+              <h3 className="font-cinzel text-xl text-white mb-3">Relationship Healing</h3>
+              <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed mb-4">
+                Restoring harmony and understanding through energy work and spiritual guidance.
+              </p>
+              <button className="flex items-center gap-2 text-[#D4AF37] font-outfit text-sm hover:text-[#F3E5AB] transition-colors" data-testid="download-case-3">
+                <FileText size={16} strokeWidth={1.5} />
+                Download PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Preview Section */}
+      <section id="blog" className="relative py-24 md:py-32 bg-[#10071C]/30" data-testid="blog-section">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-16">
+            <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-4 block">Insights & Wisdom</span>
+            <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37]">Latest from the Blog</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div className="md:col-span-8 bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="blog-featured">
+              <div className="relative h-80">
+                <img 
+                  src="https://images.pexels.com/photos/6178715/pexels-photo-6178715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  alt="Blog Post"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
+                <div className="absolute bottom-0 p-8">
+                  <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-2 block">Wiccan Traditions</span>
+                  <h3 className="font-cinzel text-2xl text-white mb-2">The Power of Moon Phases in Divination</h3>
+                  <p className="font-outfit text-sm text-[#A19CA8]">Understanding lunar cycles and their impact on psychic readings...</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="md:col-span-4 space-y-6">
+              <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-6 transition-transform duration-300 hover:-translate-y-1" data-testid="blog-post-1">
+                <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-2 block">New Age Practices</span>
+                <h4 className="font-cinzel text-lg text-white mb-2">Crystal Energy Basics</h4>
+                <p className="font-outfit text-xs text-[#A19CA8]">A beginner's guide to harnessing crystal power...</p>
+              </div>
+              
+              <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-6 transition-transform duration-300 hover:-translate-y-1" data-testid="blog-post-2">
+                <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-2 block">Celtic Wisdom</span>
+                <h4 className="font-cinzel text-lg text-white mb-2">Ancient Celtic Rituals</h4>
+                <p className="font-outfit text-xs text-[#A19CA8]">Connecting with ancestral knowledge...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Transcript Paywall Preview */}
+      <section className="relative py-24 md:py-32" data-testid="transcript-section">
+        <div className="max-w-4xl mx-auto px-6 md:px-12">
+          <div className="text-center mb-12">
+            <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37] mb-4">Your Session Transcripts</h2>
+            <p className="font-outfit text-base text-[#A19CA8]">Access detailed records of all your readings</p>
+          </div>
+          
+          <div className="relative bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-10">
+            {/* Blurred content to simulate paywall */}
+            <div className="blur-sm select-none pointer-events-none" data-testid="transcript-preview">
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <FileText className="text-[#D4AF37] mt-1" size={20} strokeWidth={1.5} />
+                  <div>
+                    <h4 className="font-cinzel text-lg text-white mb-2">Session: January 15, 2026</h4>
+                    <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed">
+                      Your reading revealed significant patterns in your life path. The cards indicated a major transition approaching in your career sector, with the Tower card suggesting...
+                    </p>
+                  </div>
+                </div>
+                <div className="h-px bg-white/10 my-6" />
+                <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed">
+                  The Celtic Cross spread showed deep connections between your past experiences and current challenges. The presence of the High Priestess in your...
+                </p>
+              </div>
+            </div>
+            
+            {/* Paywall overlay */}
+            <div className="absolute inset-0 flex items-center justify-center bg-[#050505]/40 backdrop-blur-md">
+              <div className="text-center" data-testid="paywall-overlay">
+                <Lock className="text-[#D4AF37] mx-auto mb-4" size={48} strokeWidth={1.5} />
+                <h3 className="font-cinzel text-2xl text-white mb-2">Unlock Your Transcripts</h3>
+                <p className="font-outfit text-sm text-[#A19CA8] mb-6 max-w-md">Subscribe to access all your session transcripts and recordings</p>
+                <button className="bg-gradient-to-r from-[#D4AF37] to-[#B38F1A] text-black font-semibold rounded-none px-8 py-3 hover:brightness-110 transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)]" data-testid="unlock-transcript-btn">
+                  Unlock with Stripe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative py-16 border-t border-white/5" data-testid="footer">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <div className="font-cinzel text-2xl text-[#D4AF37] mb-4">Aethera</div>
+              <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed">
+                Professional psychic consulting blending ancient wisdom with modern technology.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-cinzel text-sm text-white mb-4 uppercase tracking-wider">Services</h4>
+              <ul className="space-y-2 font-outfit text-sm text-[#A19CA8]">
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Tarot Readings</a></li>
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Spiritual Guidance</a></li>
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Energy Healing</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-cinzel text-sm text-white mb-4 uppercase tracking-wider">Resources</h4>
+              <ul className="space-y-2 font-outfit text-sm text-[#A19CA8]">
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Case Studies</a></li>
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-cinzel text-sm text-white mb-4 uppercase tracking-wider">Connect</h4>
+              <ul className="space-y-2 font-outfit text-sm text-[#A19CA8]">
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Book Session</a></li>
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-white/5 pt-8 text-center">
+            <p className="font-outfit text-sm text-[#A19CA8]">
+              © 2026 Aethera Consulting. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
