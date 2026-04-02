@@ -22,7 +22,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between h-20">
             <div className="font-cinzel text-2xl text-[#D4AF37] tracking-tight" data-testid="logo">
-              Aethera
+              Poshunz
             </div>
             
             {/* Desktop Navigation */}
@@ -78,13 +78,13 @@ function App() {
           </div>
           
           <h1 className="font-cinzel text-4xl md:text-5xl lg:text-6xl tracking-tight text-white mb-6 leading-tight" data-testid="hero-title">
-            Unlock Your Path Through
+            A Journey of Self-Discovery
             <br />
-            <span className="text-[#D4AF37]">Ancient Wisdom</span>
+            <span className="text-[#D4AF37]">and Empowerment</span>
           </h1>
           
-          <p className="font-outfit text-base md:text-lg text-[#A19CA8] leading-relaxed max-w-2xl mx-auto mb-10" data-testid="hero-description">
-            Professional psychic consulting services blending timeless Celtic traditions with modern video conferencing. Book your session and receive detailed transcripts of your reading.
+          <p className="font-outfit text-base md:text-lg text-[#A19CA8] leading-relaxed max-w-3xl mx-auto mb-10" data-testid="hero-description">
+            Discover your path through Tarot, explore your natal birth chart, and receive a personalized herbal elixir crafted to enhance your strengths and support your journey toward balance and fulfillment.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -102,45 +102,81 @@ function App() {
       <section id="services" className="relative py-24 md:py-32" data-testid="services-section">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
-            <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-4 block">Our Services</span>
-            <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37]">Consultation Offerings</h2>
+            <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-4 block">The Poshunz Journey</span>
+            <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37]">Our Three-Step Process</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Large featured service */}
-            <div className="md:col-span-8 bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 md:p-10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-tarot">
+            <div className="md:col-span-12 bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 md:p-10 mb-6" data-testid="service-intro">
+              <div className="max-w-4xl mx-auto text-center">
+                <h3 className="font-cinzel text-2xl text-[#D4AF37] mb-6">A Multi-Faceted Approach to Personal Understanding</h3>
+                <p className="font-outfit text-base text-[#A19CA8] leading-relaxed">
+                  Our unique intake process offers a comprehensive journey beginning with Tarot readings to explore karmic patterns, followed by natal chart analysis to reveal your inherent strengths, culminating in a personalized herbal elixir crafted by our experienced herbalist and alchemist.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 1: Tarot */}
+            <div className="md:col-span-4 bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 md:p-10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-tarot">
               <img 
                 src="https://images.pexels.com/photos/10976268/pexels-photo-10976268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                 alt="Tarot Reading"
-                className="w-full h-64 object-cover mb-6 opacity-80"
+                className="w-full h-48 object-cover mb-6 opacity-80"
               />
-              <Sparkles className="text-[#D4AF37] mb-4" size={32} strokeWidth={1.5} />
-              <h3 className="font-cinzel text-2xl text-white mb-4">Personal Tarot Reading</h3>
-              <p className="font-outfit text-base text-[#A19CA8] leading-relaxed mb-6">
-                Deep dive into your past, present, and future through the ancient art of tarot. Each session includes a comprehensive written transcript delivered after your reading.
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-[#D4AF37] text-black font-cinzel w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold">1</div>
+                <Sparkles className="text-[#D4AF37]" size={28} strokeWidth={1.5} />
+              </div>
+              <h3 className="font-cinzel text-xl text-white mb-4">Tarot Reading</h3>
+              <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed mb-4">
+                We commence with an insightful Tarot reading to explore potential karmic patterns and current challenges you may be facing.
               </p>
               <div className="flex items-center gap-2 text-[#D4AF37] font-outfit text-sm">
                 <Video size={18} strokeWidth={1.5} />
-                <span>60 min session via Google Meet</span>
+                <span>Via Google Meet</span>
               </div>
             </div>
             
-            {/* Smaller service cards */}
-            <div className="md:col-span-4 space-y-6">
-              <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-spiritual">
-                <Calendar className="text-[#D4AF37] mb-4" size={32} strokeWidth={1.5} />
-                <h3 className="font-cinzel text-xl text-white mb-3">Spiritual Guidance</h3>
-                <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed">
-                  Navigate life's challenges with personalized spiritual counsel and energy readings.
-                </p>
+            {/* Step 2: Birth Chart */}
+            <div className="md:col-span-4 bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 md:p-10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-chart">
+              <img 
+                src="https://images.pexels.com/photos/5976100/pexels-photo-5976100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                alt="Birth Chart"
+                className="w-full h-48 object-cover mb-6 opacity-80"
+              />
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-[#D4AF37] text-black font-cinzel w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold">2</div>
+                <Calendar className="text-[#D4AF37]" size={28} strokeWidth={1.5} />
               </div>
-              
-              <div className="bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-energy">
-                <Sparkles className="text-[#D4AF37] mb-4" size={32} strokeWidth={1.5} />
-                <h3 className="font-cinzel text-xl text-white mb-3">Energy Healing</h3>
-                <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed">
-                  Remote energy work and chakra balancing sessions to restore your inner harmony.
-                </p>
+              <h3 className="font-cinzel text-xl text-white mb-4">Natal Birth Chart</h3>
+              <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed mb-4">
+                A thorough examination of your natal birth chart reveals your inherent strengths and areas where growth and balance can be fostered.
+              </p>
+              <div className="flex items-center gap-2 text-[#D4AF37] font-outfit text-sm">
+                <FileText size={18} strokeWidth={1.5} />
+                <span>Detailed analysis included</span>
+              </div>
+            </div>
+
+            {/* Step 3: Poshunz Blend */}
+            <div className="md:col-span-4 bg-[#10071C]/60 backdrop-blur-2xl border border-white/10 rounded-none p-8 md:p-10 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]" data-testid="service-potion">
+              <img 
+                src="https://images.pexels.com/photos/6178715/pexels-photo-6178715.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                alt="Poshunz Blend"
+                className="w-full h-48 object-cover mb-6 opacity-80"
+              />
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-[#D4AF37] text-black font-cinzel w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold">3</div>
+                <Sparkles className="text-[#D4AF37]" size={28} strokeWidth={1.5} />
+              </div>
+              <h3 className="font-cinzel text-xl text-white mb-4">Your Personalized Poshunz</h3>
+              <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed mb-4">
+                Our herbalist and alchemist craft a potent elixir designed to enhance your strengths and support you in achieving your goals.
+              </p>
+              <div className="flex items-center gap-2 text-[#D4AF37] font-outfit text-sm">
+                <Sparkles size={18} strokeWidth={1.5} />
+                <span>Custom herbal blend</span>
               </div>
             </div>
           </div>
@@ -153,9 +189,9 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="font-outfit text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-4 block">Easy Scheduling</span>
-              <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37] mb-6">Book Your Session</h2>
+              <h2 className="font-cinzel text-3xl md:text-4xl tracking-tight text-[#D4AF37] mb-6">Begin Your Journey</h2>
               <p className="font-outfit text-base text-[#A19CA8] leading-relaxed mb-8">
-                Connect with ancient wisdom through modern technology. Schedule your consultation via Google Calendar, meet through Google Meet, and receive detailed transcripts of your session.
+                Schedule your personalized Poshunz experience. Each session is conducted via Google Meet and includes a comprehensive transcript along with your custom herbal blend recommendations.
               </p>
               
               <div className="space-y-4">
@@ -357,18 +393,18 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-              <div className="font-cinzel text-2xl text-[#D4AF37] mb-4">Aethera</div>
+              <div className="font-cinzel text-2xl text-[#D4AF37] mb-4">Poshunz</div>
               <p className="font-outfit text-sm text-[#A19CA8] leading-relaxed">
-                Professional psychic consulting blending ancient wisdom with modern technology.
+                A journey of self-discovery through Tarot, astrology, and personalized herbal alchemy.
               </p>
             </div>
             
             <div>
-              <h4 className="font-cinzel text-sm text-white mb-4 uppercase tracking-wider">Services</h4>
+              <h4 className="font-cinzel text-sm text-white mb-4 uppercase tracking-wider">The Journey</h4>
               <ul className="space-y-2 font-outfit text-sm text-[#A19CA8]">
                 <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Tarot Readings</a></li>
-                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Spiritual Guidance</a></li>
-                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Energy Healing</a></li>
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Birth Chart Analysis</a></li>
+                <li><a href="#" className="hover:text-[#D4AF37] transition-colors">Custom Herbal Blends</a></li>
               </ul>
             </div>
             
@@ -393,7 +429,7 @@ function App() {
           
           <div className="border-t border-white/5 pt-8 text-center">
             <p className="font-outfit text-sm text-[#A19CA8]">
-              © 2026 Aethera Consulting. All rights reserved.
+              © 2026 Poshunz. All rights reserved.
             </p>
           </div>
         </div>
